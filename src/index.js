@@ -1,6 +1,9 @@
 addEventListener("fetch", (event) => {
-  event.passThroughOnException();
-  event.respondWith(handleRequest(event.request));
+  console.log(`Received new request: ${event.request.url}`)
+  event.respondWith(
+    handleRequest(event.request).
+      catch(err => new Response(err.toString(), { status: 500 }))
+  );
 });
 
 const dockerHub = "https://registry-1.docker.io";
