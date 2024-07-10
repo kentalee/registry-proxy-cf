@@ -1,8 +1,9 @@
 addEventListener("fetch", (event) => {
   console.log(`Received new request: ${event.request.url}`)
   event.respondWith(
-    handleRequest(event.request).
-      catch(err => new Response(err.toString(), { status: 500 }))
+    // handleRequest(event.request).
+    //   catch(err => new Response(err.toString(), { status: 500 }))
+    new Response("Service Unavailable", { status: 503 })
   );
 });
 
